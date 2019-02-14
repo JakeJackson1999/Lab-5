@@ -136,12 +136,29 @@ public class Calculator
      */
     protected static int execute(String[] tokens) throws NumberFormatException, CalculatorException
     {
-        // Condition on the number of tokens (number of strings in user input separated by spaces)
+        int answer = 0;// Condition on the number of tokens (number of strings in user input separated by spaces)
         switch(tokens.length)
         {
-        	case 1:	tokens.length = 0;
-        	break;// TODO: complete this...
+        case 1:	if(tokens[0].equalsIgnoreCase("quit")) 
+        		{
+        			return Integer.MIN_VALUE;
+        		}
+        		if(!tokens[0].equalsIgnoreCase("quit"))
+        		{
+        			throw new CalculatorException("Illegal Command");
+        		}
+        break;
+        
+        case 2: return calculateTwoTokens(tokens);
+        
+        
+        case 3: return calculateThreeTokens(tokens);
+        
+        
+        default: throw new CalculatorException("Illegal Token Length");
+        	// TODO: complete this...
         }
+        return answer;
 
     }
 
