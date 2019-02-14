@@ -83,7 +83,27 @@ public class Calculator
     protected static int calculateThreeTokens(String[] tokens)
             throws ArithmeticException, NumberFormatException, CalculatorException
     {
-        // TODO: complete this...
+        int a = Integer.parseInt(tokens[0]);
+        int b = Integer.parseInt(tokens[2]);
+        int result = 0;
+        String command = tokens[1];
+        if (command == "+")
+        {
+        	result = a + b;// TODO: complete this...
+        }
+        if (command == "-")
+        {
+        	result = a - b;
+        }
+        if (command == "/")
+        {
+        	result = a / b;
+        }
+        if (!(command == "+") && !(command == "-") && !(command == "/"))
+        {
+        	throw new CalculatorException("Command is invalid");
+        }
+        return result;
     }
 
     /**
@@ -119,7 +139,8 @@ public class Calculator
         // Condition on the number of tokens (number of strings in user input separated by spaces)
         switch(tokens.length)
         {
-            // TODO: complete this...
+        	case 1:	tokens.length = 0;
+        	break;// TODO: complete this...
         }
 
     }
