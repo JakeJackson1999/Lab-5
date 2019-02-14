@@ -64,7 +64,20 @@ public class CalculatorTest {
      */
     public void calculateTwoTokensTestInvalidCommand() throws AssertException
     {
-        // TODO: complete this test...
+    	try
+        {
+            Calculator.calculateTwoTokens(new String[] {"test", "8"});
+            Assert.fail("Illegal expression did not throw an Exception");
+        }
+        catch (CalculatorException e)
+        {
+            // We expect the function to throw a NumberFormatException (from failure of Integer.parseInt)
+            // Success; Assert.fail will not be thrown and the code will complete the test, thus succeeding.
+        }
+        catch (Exception e)
+        {
+            Assert.fail("Unexpected Exception (not NumberFormatException) caught");
+        }// TODO: complete this test...
     }
 
     /**
@@ -158,7 +171,20 @@ public class CalculatorTest {
      */
     public void calculateThreeTokensTestInvalidCommand() throws AssertException
     {
-        // TODO: complete this test...
+    	try
+        {
+            Calculator.calculateThreeTokens(new String[] {"5", "~", "10"});
+            Assert.fail("Illegal expression did not throw an Exception");
+        }
+        catch (CalculatorException e)
+        {
+            // We expect the function to throw a NumberFormatException (from failure of Integer.parseInt)
+            // Success; Assert.fail will not be thrown and the code will complete the test, thus succeeding.
+        }
+        catch (Exception e)
+        {
+            Assert.fail("Unexpected Exception (not NumberFormatException) caught");
+        }// TODO: complete this test...
     }
 
     /**
@@ -190,7 +216,14 @@ public class CalculatorTest {
      */
     public void executeTestValidThreeTokens() throws AssertException
     {
-        // TODO: complete this test...
+        try{
+        	int result = Calculator.execute(new String[] {"2", "+", "3"});
+        	Assert.assertEquals(5, result);// TODO: complete this test...
+        }
+        catch (Exception e)
+        {
+        	Assert.fail("Legal expression threw an Exception: " + e.getMessage());
+        }
     }
 
     /**
