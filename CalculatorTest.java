@@ -283,7 +283,8 @@ public class CalculatorTest {
      */
     public void parseAndExecuteTestDivideByZero() throws AssertException
     {
-        // TODO: complete this test...
+        String result = Calculator.parseAndExecute("10 / 0");
+        Assert.assertEquals("Attempted to divide by 0. Please try again.", result);// TODO: complete this test...
     }
 
     /**
@@ -291,7 +292,8 @@ public class CalculatorTest {
      */
     public void parseAndExecuteTestInvalidNumber() throws AssertException
     {
-        // TODO: complete this test...
+        String result = Calculator.parseAndExecute("negate foo");
+    	Assert.assertEquals("Input number cannot be parsed to an int. Please try again.", result);// TODO: complete this test...
     }
 
     /**
