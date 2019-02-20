@@ -204,7 +204,7 @@ public class Calculator
     	{
     		
     		int returned = execute(split);
-    		if(returned == (int)Integer.MAX_VALUE)
+    		if(returned == (int)Integer.MIN_VALUE)
     		{
     			return "quit";
     		}
