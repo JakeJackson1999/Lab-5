@@ -1,3 +1,5 @@
+
+
 /**
  * A class representing a simple calculator. The calculator takes in an input string and interprets it as a command.
  * The calculator evaluates the command and returns a result.
@@ -46,7 +48,7 @@ public class Calculator
         }
         if(!command.equalsIgnoreCase("negate") && !command.equalsIgnoreCase("halve"))
         {
-        	throw new CalculatorException("Command is invalid");
+        	throw new CalculatorException("Illegal Command");
         }
         return a;
         
@@ -101,7 +103,7 @@ public class Calculator
         }
         if (!(command == "+") && !(command == "-") && !(command == "/"))
         {
-        	throw new CalculatorException("Command is invalid");
+        	throw new CalculatorException("Invalid Command");
         }
         return result;
     }
@@ -190,10 +192,46 @@ public class Calculator
      * (4) "Input number cannot be parsed to an int. Please try again." - a NumberFormat has been caught.
      * (5) "Calculator Exception, message is: %s", where %s is the message of a
      * CalculatorException - a CalculatorException has been caught.
+     * @throws CalculatorException 
+     * @throws IOException 
      */
     public static String parseAndExecute(String input)
     {
-        // TODO: complete this...
+    	
+    	
+    	String[] split = input.split(" ");
+    	try
+    	{
+    		
+    		int returned = execute(split);
+    		if(returned == (int)Integer.MAX_VALUE)
+    		{
+    			return "quit";
+    		}
+    		else
+    		{
+    			return String.format("The result is: %d", returned);
+    		}
+    		
+    	}
+    	catch(ArithmeticException error)
+    	{
+    		return ("Attempted to divide by 0. Please try again.");
+    	}
+    	catch(NumberFormatException nfe)
+    	{
+    		return ("Input number cannot be parsed to an int. Please try again.");
+    	}
+    	catch(CalculatorException ce)
+    	{
+    		return String.format("Calculator Exception, message is: %s", ce.getMessage());
+    	}
+    	
+    	
+    	
+    	
+    	
+    	// TODO: complete this...
         // Hint: you should try and call execute(). If execute encounters an error, it will throw an exception. This
         // method will catch those exceptions and respond accordingly.
     }
